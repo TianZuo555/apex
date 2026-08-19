@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Apex for X (Twitter)
 @namespace      github.com/clearlysid/apex
-@version        1.0.1
+@version        1.0.2
 @description    A clean, minimal, distraction-free theme for Twitter / X inspired by the Apex Obsidian theme, typeset in Geist & Geist Mono.
 @author         clearlysid (https://github.com/clearlysid/apex)
 @homepageURL    https://github.com/clearlysid/apex
@@ -77,11 +77,6 @@
 @var select hide_views "Hide Tweet View Counts" {
   "hide:Hide View Counts (Apex Default)*": "none !important",
   "show:Show View Counts": "inline-flex !important"
-}
-
-@var select hide_scrollbars "Hide Scrollbars (Apex Hider)" {
-  "hide:Hide Scrollbars (Apex Default)*": "none !important",
-  "show:Show Scrollbars": "auto !important"
 }
 
 @var select dotted_links "Apex Dotted Link Underlines" {
@@ -531,13 +526,6 @@
   /* ==========================================================================
      DISTRACTION-FREE HIDERS & TOGGLES
      ========================================================================== */
-  /* Scrollbars */
-  *::-webkit-scrollbar {
-    display: /*[[hide_scrollbars]]*/;
-    width: 0 !important;
-    height: 0 !important;
-  }
-
   /* Right Sidebar (Trends, Who to Follow) */
   div[data-testid="sidebarColumn"] {
     display: /*[[hide_right_sidebar]]*/;
@@ -552,9 +540,7 @@
   button[data-testid="grok-share-button"],
   div[data-testid="GrokDrawer"],
   div[data-testid="grokDrawer"],
-  div[data-testid="grok_entry_point"],
-  div[data-testid="cellInnerDiv"]:has(a[href*="/i/grok"]),
-  div[data-testid="cellInnerDiv"]:has(button[aria-label*="Grok"]) {
+  div[data-testid="grok_entry_point"] {
     display: /*[[hide_grok]]*/;
   }
 
@@ -567,31 +553,22 @@
   a[href="/i/superfollows"],
   [data-testid="premium-signup-tab"],
   aside[aria-label="Subscribe to Premium"],
-  div:has(> aside[aria-label="Subscribe to Premium"]),
-  div[data-testid="cellInnerDiv"]:has(aside[aria-label="Subscribe to Premium"]),
-  div[data-testid="cellInnerDiv"]:has(a[href*="premium_sign_up"]),
-  div[data-testid="cellInnerDiv"]:has(a[href*="verified-orgs"]) {
+  div:has(> aside[aria-label="Subscribe to Premium"]) {
     display: /*[[hide_premium]]*/;
   }
 
   /* Promoted / Ads */
   article[data-testid="tweet"]:has(a[href*="quick_promote"]),
-  div[data-testid="cellInnerDiv"]:has([data-testid="placementTracking"]),
   div[data-testid="placementTracking"],
-  div[data-testid="cellInnerDiv"]:has(a[href*="googleads"]),
-  div[data-testid="cellInnerDiv"]:has(a[href*="/i/promoted_content"]),
-  div[data-testid="cellInnerDiv"]:has(a[href*="x.com/i/promoted_content"]),
-  div[data-testid="cellInnerDiv"]:has([data-testid="promotedIndicator"]),
   [data-testid="promotedIndicator"] {
     display: /*[[hide_ads]]*/;
   }
 
   /* In-Feed Recommendations */
-  div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Who to follow"]),
-  div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Relevant people"]),
-  div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Who to Follow"]),
-  div[data-testid="cellInnerDiv"]:has(div[aria-label*="Timeline: Connect"]),
-  div[data-testid="cellInnerDiv"]:has(a[href*="/i/connect_people"]) {
+  aside[aria-label*="Who to follow"],
+  aside[aria-label*="Relevant people"],
+  aside[aria-label*="Who to Follow"],
+  div[aria-label*="Timeline: Connect"] {
     display: /*[[hide_infeed_recs]]*/;
   }
 
