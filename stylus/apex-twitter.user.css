@@ -1,0 +1,763 @@
+/* ==UserStyle==
+@name           Apex for X (Twitter)
+@namespace      github.com/clearlysid/apex
+@version        1.0.0
+@description    A clean, minimal, distraction-free theme for Twitter / X inspired by the Apex Obsidian theme, typeset in Geist & Geist Mono.
+@author         Apex (inspired by @clearlysid & @c_m_vignesh)
+@homepageURL    https://github.com/clearlysid/apex
+@supportURL     https://github.com/clearlysid/apex/issues
+@license        MIT
+@preprocessor   uso
+
+@var select theme_mode "Color Palette" {
+  "dark:Apex Dark (#111111)*": `
+    --apex-bg-primary: #111111;
+    --apex-bg-secondary: #161616;
+    --apex-bg-tertiary: #1c1c1c;
+    --apex-bg-hover: #191919;
+    --apex-bg-glass: rgba(17, 17, 17, 0.85);
+    --apex-text-primary: #cccccc;
+    --apex-text-muted: #707070;
+    --apex-text-faint: #444444;
+    --apex-border: #1f1f1f;
+    --apex-border-subtle: #181818;
+    --apex-accent: #3c983c;
+    --apex-accent-hover: #4db34d;
+    --apex-btn-bg: #e2e2e2;
+    --apex-btn-text: #111111;
+    --apex-like-color: #e05260;
+    --apex-reply-color: #7090b0;
+    --apex-repost-color: #3c983c;
+    --apex-bookmark-color: #d4a359;
+  `,
+  "pitch_black:Apex Pitch Black (#000000 / OLED)": `
+    --apex-bg-primary: #000000;
+    --apex-bg-secondary: #0a0a0a;
+    --apex-bg-tertiary: #121212;
+    --apex-bg-hover: #141414;
+    --apex-bg-glass: rgba(0, 0, 0, 0.88);
+    --apex-text-primary: #cccccc;
+    --apex-text-muted: #666666;
+    --apex-text-faint: #383838;
+    --apex-border: #161616;
+    --apex-border-subtle: #0f0f0f;
+    --apex-accent: #3c983c;
+    --apex-accent-hover: #4db34d;
+    --apex-btn-bg: #e2e2e2;
+    --apex-btn-text: #000000;
+    --apex-like-color: #e05260;
+    --apex-reply-color: #7090b0;
+    --apex-repost-color: #3c983c;
+    --apex-bookmark-color: #d4a359;
+  `,
+  "light:Apex Light (#f7f7f7)": `
+    --apex-bg-primary: #f7f7f7;
+    --apex-bg-secondary: #fcfcfc;
+    --apex-bg-tertiary: #f0f0f0;
+    --apex-bg-hover: #ebebeb;
+    --apex-bg-glass: rgba(247, 247, 247, 0.85);
+    --apex-text-primary: #1a1a1a;
+    --apex-text-muted: #8a8886;
+    --apex-text-faint: #b5b3b1;
+    --apex-border: #e6e6e6;
+    --apex-border-subtle: #efefef;
+    --apex-accent: #2e7d2e;
+    --apex-accent-hover: #3c983c;
+    --apex-btn-bg: #1a1a1a;
+    --apex-btn-text: #f7f7f7;
+    --apex-like-color: #c93b4a;
+    --apex-reply-color: #4a7090;
+    --apex-repost-color: #2e7d2e;
+    --apex-bookmark-color: #b58030;
+  `,
+  "system:Adaptive (Apex Dark in Dark Mode, Apex Light in Light Mode)": `
+    --apex-bg-primary: #111111;
+    --apex-bg-secondary: #161616;
+    --apex-bg-tertiary: #1c1c1c;
+    --apex-bg-hover: #191919;
+    --apex-bg-glass: rgba(17, 17, 17, 0.85);
+    --apex-text-primary: #cccccc;
+    --apex-text-muted: #707070;
+    --apex-text-faint: #444444;
+    --apex-border: #1f1f1f;
+    --apex-border-subtle: #181818;
+    --apex-accent: #3c983c;
+    --apex-accent-hover: #4db34d;
+    --apex-btn-bg: #e2e2e2;
+    --apex-btn-text: #111111;
+    --apex-like-color: #e05260;
+    --apex-reply-color: #7090b0;
+    --apex-repost-color: #3c983c;
+    --apex-bookmark-color: #d4a359;
+  `
+}
+
+@var select font_mode "Typography Style" {
+  "geist_mono:Geist Mono (Default Apex Monospace)*": "'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
+  "geist_sans:Geist Sans (Clean Proportional)": "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+  "system_mono:System Monospace": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
+  "system_sans:System Sans-Serif": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+}
+
+@var select font_size "Tweet Font Size" {
+  "standard:14.5px (Standard Apex)*": "14.5px",
+  "compact:13.5px (Compact)": "13.5px",
+  "large:15.5px (Comfortable)": "15.5px",
+  "xlarge:16.5px (Large)": "16.5px"
+}
+
+@var select corner_radius "Corner Radius / Border Style" {
+  "apex_square:Apex Minimal (4px Square)*": "4px",
+  "rounded:Subtle Rounded (8px)": "8px",
+  "sharp:Sharp Monospace (0px)": "0px",
+  "twitter_default:Twitter Default (Pill / Round)": "9999px"
+}
+
+@var select timeline_width "Timeline Max Width" {
+  "standard:Standard Apex (650px)*": "650px",
+  "compact:Compact Zen (600px)": "600px",
+  "wide:Spacious (720px)": "720px",
+  "full:Full Available Width": "100%"
+}
+
+@var select hide_right_sidebar "Hide Right Sidebar (Trends & Who to Follow)" {
+  "hide:Hide Right Sidebar (Apex Default)*": `
+    div[data-testid="sidebarColumn"] {
+      display: none !important;
+    }
+    main[role="main"] {
+      display: flex !important;
+      justify-content: center !important;
+    }
+    div[data-testid="primaryColumn"] {
+      max-width: var(--apex-timeline-width) !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      border-left: 1px solid var(--apex-border) !important;
+      border-right: 1px solid var(--apex-border) !important;
+    }
+  `,
+  "show:Show Right Sidebar": "/* sidebar visible */"
+}
+
+@var select hide_grok "Hide Grok & AI Elements" {
+  "hide:Hide Grok (Apex Default)*": `
+    a[data-testid="AppTabBar_Grok_Link"],
+    a[href="/i/grok"],
+    a[href*="/i/grok"],
+    button[aria-label="Grok actions"],
+    button[aria-label="Ask Grok"],
+    button[data-testid="grok-share-button"],
+    div[data-testid="GrokDrawer"],
+    div[data-testid="grokDrawer"],
+    div[data-testid="grok_entry_point"],
+    div[data-testid="cellInnerDiv"]:has(a[href*="/i/grok"]),
+    div[data-testid="cellInnerDiv"]:has(button[aria-label*="Grok"]) {
+      display: none !important;
+    }
+  `,
+  "show:Show Grok": "/* grok visible */"
+}
+
+@var select hide_premium "Hide Premium & Verified Upsells" {
+  "hide:Hide Premium Upsells (Apex Default)*": `
+    a[data-testid="AppTabBar_Premium_Link"],
+    a[href="/i/premium_sign_up"],
+    a[href="/i/verified-orgs-signup"],
+    a[href="/i/monetization"],
+    a[href="/i/creator-monetization"],
+    a[href="/i/superfollows"],
+    [data-testid="premium-signup-tab"],
+    aside[aria-label="Subscribe to Premium"],
+    div:has(> aside[aria-label="Subscribe to Premium"]),
+    div[data-testid="cellInnerDiv"]:has(aside[aria-label="Subscribe to Premium"]),
+    div[data-testid="cellInnerDiv"]:has(a[href*="premium_sign_up"]),
+    div[data-testid="cellInnerDiv"]:has(a[href*="verified-orgs"]) {
+      display: none !important;
+    }
+  `,
+  "show:Show Premium": "/* premium visible */"
+}
+
+@var select hide_ads "Hide Promoted / Ad Tweets" {
+  "hide:Hide Ads (Apex Default)*": `
+    article[data-testid="tweet"]:has(a[href*="quick_promote"]),
+    div[data-testid="cellInnerDiv"]:has([data-testid="placementTracking"]),
+    div[data-testid="placementTracking"],
+    div[data-testid="cellInnerDiv"]:has(a[href*="googleads"]),
+    div[data-testid="cellInnerDiv"]:has(a[href*="/i/promoted_content"]),
+    div[data-testid="cellInnerDiv"]:has(a[href*="x.com/i/promoted_content"]),
+    div[data-testid="cellInnerDiv"]:has([data-testid="promotedIndicator"]),
+    [data-testid="promotedIndicator"] {
+      display: none !important;
+    }
+  `,
+  "show:Show Ads": "/* ads visible */"
+}
+
+@var select hide_infeed_recs "Hide In-Feed Follow Recommendations & Carousels" {
+  "hide:Hide Recommendations (Apex Default)*": `
+    div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Who to follow"]),
+    div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Relevant people"]),
+    div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Who to Follow"]),
+    div[data-testid="cellInnerDiv"]:has(div[aria-label*="Timeline: Connect"]),
+    div[data-testid="cellInnerDiv"]:has(a[href*="/i/connect_people"]) {
+      display: none !important;
+    }
+  `,
+  "show:Show Recommendations": "/* recommendations visible */"
+}
+
+@var select hide_dm_drawer "Hide Floating Messages (DM) Drawer" {
+  "hide:Hide DM Drawer (Apex Default)*": `
+    div[data-testid="DMDrawer"],
+    div[data-testid="DMDrawerHeader"],
+    div[data-testid="chat-bar"],
+    div[data-testid="dm-bar"] {
+      display: none !important;
+    }
+  `,
+  "show:Show DM Drawer": "/* dm drawer visible */"
+}
+
+@var select hide_views "Hide Tweet View Counts" {
+  "hide:Hide View Counts (Apex Default)*": `
+    article[data-testid="tweet"] div[role="group"] div:has(a[href$="/analytics"]),
+    article[data-testid="tweet"] div[role="group"] a[href$="/analytics"],
+    article[data-testid="tweet"] div[role="group"] a[aria-label*="views"],
+    article[data-testid="tweet"] div[role="group"] a[aria-label*="View"] {
+      display: none !important;
+    }
+  `,
+  "show:Show View Counts": "/* views visible */"
+}
+
+@var select hide_metrics_mode "Vanity Metrics Visibility (Likes / Reposts)" {
+  "always:Always Show Metrics*": "/* metrics visible */",
+  "hover:Show Only on Hover (Zen Mode)": `
+    article[data-testid="tweet"] div[role="group"] span[data-testid="app-text-transition-container"] {
+      opacity: 0 !important;
+      transition: opacity 0.15s ease-in-out !important;
+    }
+    article[data-testid="tweet"]:hover div[role="group"] span[data-testid="app-text-transition-container"],
+    article[data-testid="tweet"] div[role="group"]:hover span[data-testid="app-text-transition-container"] {
+      opacity: 1 !important;
+    }
+  `,
+  "hidden:Completely Hide Metrics": `
+    article[data-testid="tweet"] div[role="group"] span[data-testid="app-text-transition-container"] {
+      display: none !important;
+    }
+  `
+}
+
+@var select hide_scrollbars "Hide Scrollbars (Apex Hider)" {
+  "hide:Hide Scrollbars (Apex Default)*": `
+    *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    * {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+  `,
+  "show:Show Scrollbars": "/* scrollbars visible */"
+}
+
+@var select dotted_links "Apex Dotted Link Underlines" {
+  "dotted:Dotted Underlines (Apex Default)*": `
+    [data-testid="tweetText"] a,
+    [data-testid="tweetText"] a:visited {
+      text-decoration: underline dotted !important;
+      text-underline-offset: 3px !important;
+      text-decoration-color: var(--apex-text-muted) !important;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease !important;
+    }
+    [data-testid="tweetText"] a:hover {
+      text-decoration-color: var(--apex-text-primary) !important;
+    }
+  `,
+  "plain:Plain Underlines": `
+    [data-testid="tweetText"] a {
+      text-decoration: underline !important;
+    }
+  `,
+  "none:No Underlines": `
+    [data-testid="tweetText"] a {
+      text-decoration: none !important;
+    }
+  `
+}
+
+@var select desaturate_badges "Verified Badges & Status Icons" {
+  "subdue:Desaturate & Subdue Badges (Apex Default)*": `
+    svg[data-testid="icon-verified"],
+    svg[aria-label*="Verified"] {
+      filter: grayscale(1) opacity(0.35) !important;
+      transition: filter 0.2s ease, opacity 0.2s ease !important;
+    }
+    article[data-testid="tweet"]:hover svg[data-testid="icon-verified"],
+    article[data-testid="tweet"]:hover svg[aria-label*="Verified"] {
+      opacity: 0.8 !important;
+    }
+  `,
+  "default:Default Blue Badges": "/* badges default */"
+}
+==/UserStyle== */
+
+@-moz-document domain("x.com"), domain("twitter.com"), domain("mobile.twitter.com"), domain("pro.twitter.com") {
+  /* ==========================================================================
+     FONTS & TYPOGRAPHY IMPORT
+     ========================================================================== */
+  @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700&display=swap');
+
+  /* ==========================================================================
+     THEME VARIABLES & COLOR SCHEME
+     ========================================================================== */
+  :root {
+    /*[[theme_mode]]*/
+
+    --apex-font-main: /*[[font_mode]]*/;
+    --apex-font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+    --apex-font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --apex-font-size: /*[[font_size]]*/;
+    --apex-radius: /*[[corner_radius]]*/;
+    --apex-timeline-width: /*[[timeline_width]]*/;
+
+    /* Override Twitter native CSS variables */
+    --color-background: var(--apex-bg-primary) !important;
+    --color-text: var(--apex-text-primary) !important;
+    --color-text-secondary: var(--apex-text-muted) !important;
+    --color-border: var(--apex-border) !important;
+  }
+
+  /* Adaptive light mode fallback */
+  @media (prefers-color-scheme: light) {
+    html:not([style*="color-scheme: dark"]) :root {
+      --apex-bg-primary: #f7f7f7;
+      --apex-bg-secondary: #fcfcfc;
+      --apex-bg-tertiary: #f0f0f0;
+      --apex-bg-hover: #ebebeb;
+      --apex-bg-glass: rgba(247, 247, 247, 0.85);
+      --apex-text-primary: #1a1a1a;
+      --apex-text-muted: #8a8886;
+      --apex-text-faint: #b5b3b1;
+      --apex-border: #e6e6e6;
+      --apex-border-subtle: #efefef;
+      --apex-accent: #2e7d2e;
+      --apex-accent-hover: #3c983c;
+      --apex-btn-bg: #1a1a1a;
+      --apex-btn-text: #f7f7f7;
+      --apex-like-color: #c93b4a;
+      --apex-reply-color: #4a7090;
+      --apex-repost-color: #2e7d2e;
+      --apex-bookmark-color: #b58030;
+    }
+  }
+
+  /* ==========================================================================
+     GLOBAL BASE & LAYOUT
+     ========================================================================== */
+  html,
+  body,
+  div#react-root,
+  div[data-testid="primaryColumn"],
+  main[role="main"],
+  header[role="banner"] {
+    background-color: var(--apex-bg-primary) !important;
+    color: var(--apex-text-primary) !important;
+    font-family: var(--apex-font-main) !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
+
+  /* ==========================================================================
+     TIMELINE, FEED & TWEETS
+     ========================================================================== */
+  /* Tweet container cells */
+  div[data-testid="cellInnerDiv"],
+  article[data-testid="tweet"] {
+    background-color: var(--apex-bg-primary) !important;
+    color: var(--apex-text-primary) !important;
+    border-color: var(--apex-border) !important;
+    transition: background-color 0.15s ease !important;
+  }
+
+  article[data-testid="tweet"]:hover {
+    background-color: var(--apex-bg-hover) !important;
+  }
+
+  /* Tweet Body Text */
+  div[data-testid="tweetText"] {
+    font-family: var(--apex-font-main) !important;
+    font-size: var(--apex-font-size) !important;
+    line-height: 1.65 !important;
+    letter-spacing: -0.01em !important;
+    color: var(--apex-text-primary) !important;
+  }
+
+  /* Tweet Author Display Name */
+  div[data-testid="User-Name"] span:first-child,
+  div[data-testid="User-Name"] a[role="link"] > div > span {
+    font-family: var(--apex-font-sans) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    color: var(--apex-text-primary) !important;
+  }
+
+  /* Tweet Handles (@username), Separator dot & Timestamps */
+  div[data-testid="User-Name"] a[tabindex="-1"],
+  div[data-testid="User-Name"] a[tabindex="-1"] span,
+  div[data-testid="User-Name"] span:not(:first-child),
+  time,
+  article[data-testid="tweet"] time {
+    font-family: var(--apex-font-mono) !important;
+    color: var(--apex-text-muted) !important;
+    font-size: 13.5px !important;
+  }
+
+  /* Top Sticky Header & Tabs Bar */
+  div[data-testid="primaryColumn"] > div > div:first-child,
+  div[role="tablist"],
+  div[data-testid="TopNavBar"] {
+    background-color: var(--apex-bg-glass) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid var(--apex-border) !important;
+  }
+
+  /* Header Title text */
+  div[data-testid="TopNavBar"] h2,
+  div[data-testid="TopNavBar"] span,
+  h2[role="heading"] {
+    font-family: var(--apex-font-sans) !important;
+    font-weight: 600 !important;
+    color: var(--apex-text-primary) !important;
+  }
+
+  /* Tab items ("For you", "Following") */
+  div[role="tablist"] a[role="tab"] {
+    font-family: var(--apex-font-mono) !important;
+    font-size: 14px !important;
+    color: var(--apex-text-muted) !important;
+    transition: color 0.15s ease !important;
+  }
+
+  div[role="tablist"] a[role="tab"][aria-selected="true"] {
+    color: var(--apex-text-primary) !important;
+    font-weight: 600 !important;
+  }
+
+  div[role="tablist"] a[role="tab"][aria-selected="true"] > div > div:last-child {
+    background-color: var(--apex-text-primary) !important;
+    height: 2px !important;
+    border-radius: 2px !important;
+  }
+
+  /* ==========================================================================
+     TWEET ACTIONS (Reply, Repost, Like, Bookmark, Share)
+     ========================================================================== */
+  article[data-testid="tweet"] div[role="group"] {
+    color: var(--apex-text-muted) !important;
+    margin-top: 8px !important;
+    max-width: 480px !important;
+  }
+
+  article[data-testid="tweet"] div[role="group"] button,
+  article[data-testid="tweet"] div[role="group"] div[role="button"] {
+    color: var(--apex-text-muted) !important;
+    transition: color 0.15s ease, transform 0.1s ease !important;
+  }
+
+  /* Action counts / numbers */
+  article[data-testid="tweet"] div[role="group"] span {
+    font-family: var(--apex-font-mono) !important;
+    font-size: 12.5px !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  /* Reply Hover */
+  div[data-testid="reply"]:hover,
+  button[data-testid="reply"]:hover {
+    color: var(--apex-reply-color) !important;
+  }
+  div[data-testid="reply"]:hover svg,
+  button[data-testid="reply"]:hover svg {
+    color: var(--apex-reply-color) !important;
+  }
+
+  /* Repost / Retweet Hover & Active */
+  div[data-testid="retweet"]:hover,
+  button[data-testid="retweet"]:hover,
+  div[data-testid="unretweet"],
+  button[data-testid="unretweet"] {
+    color: var(--apex-repost-color) !important;
+  }
+  div[data-testid="retweet"]:hover svg,
+  button[data-testid="retweet"]:hover svg,
+  div[data-testid="unretweet"] svg,
+  button[data-testid="unretweet"] svg {
+    color: var(--apex-repost-color) !important;
+  }
+
+  /* Like Hover & Active */
+  div[data-testid="like"]:hover,
+  button[data-testid="like"]:hover,
+  div[data-testid="unlike"],
+  button[data-testid="unlike"] {
+    color: var(--apex-like-color) !important;
+  }
+  div[data-testid="like"]:hover svg,
+  button[data-testid="like"]:hover svg,
+  div[data-testid="unlike"] svg,
+  button[data-testid="unlike"] svg {
+    color: var(--apex-like-color) !important;
+  }
+
+  /* Bookmark Hover & Active */
+  div[data-testid="bookmark"]:hover,
+  button[data-testid="bookmark"]:hover,
+  div[data-testid="removeBookmark"],
+  button[data-testid="removeBookmark"] {
+    color: var(--apex-bookmark-color) !important;
+  }
+  div[data-testid="bookmark"]:hover svg,
+  button[data-testid="bookmark"]:hover svg,
+  div[data-testid="removeBookmark"] svg,
+  button[data-testid="removeBookmark"] svg {
+    color: var(--apex-bookmark-color) !important;
+  }
+
+  /* Share Hover */
+  button[aria-label*="Share"]:hover,
+  div[aria-label*="Share"]:hover {
+    color: var(--apex-text-primary) !important;
+  }
+
+  /* ==========================================================================
+     MEDIA, CARDS, AVATARS & GEOMETRY
+     ========================================================================== */
+  /* User Avatars */
+  div[data-testid="Tweet-User-Avatar"] img,
+  div[data-testid="Tweet-User-Avatar"] div,
+  div[data-testid="UserAvatar-Container"] img,
+  a[role="link"]:has(div[data-testid="Tweet-User-Avatar"]) img {
+    border-radius: var(--apex-radius) !important;
+    border: 1px solid var(--apex-border-subtle) !important;
+  }
+
+  /* Photos & Videos in Tweets */
+  div[data-testid="tweetPhoto"],
+  div[data-testid="tweetPhoto"] img,
+  div[data-testid="videoPlayer"],
+  div[data-testid="videoComponent"],
+  div[data-testid="card.wrapper"] {
+    border-radius: var(--apex-radius) !important;
+    border: 1px solid var(--apex-border) !important;
+    overflow: hidden !important;
+  }
+
+  /* Quote Tweets & Embedded Link Cards */
+  div[role="link"][tabindex="0"]:has(article[data-testid="tweet"]),
+  div[data-testid="card.wrapper"],
+  div[data-testid="card.layoutLarge.detail"] {
+    background-color: var(--apex-bg-secondary) !important;
+    border: 1px solid var(--apex-border) !important;
+    border-radius: var(--apex-radius) !important;
+  }
+
+  div[data-testid="card.layoutLarge.detail"] span {
+    font-family: var(--apex-font-main) !important;
+  }
+
+  /* ==========================================================================
+     COMPOSE BOX & INPUTS
+     ========================================================================== */
+  /* Textarea */
+  div[data-testid="tweetTextarea_0"],
+  div[data-testid="tweetTextarea_0_label"] {
+    font-family: var(--apex-font-main) !important;
+    font-size: var(--apex-font-size) !important;
+    color: var(--apex-text-primary) !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Compose toolbar icons */
+  div[data-testid="toolBar"] button {
+    color: var(--apex-text-muted) !important;
+    transition: color 0.15s ease, background-color 0.15s ease !important;
+  }
+
+  div[data-testid="toolBar"] button:hover {
+    color: var(--apex-text-primary) !important;
+    background-color: var(--apex-bg-hover) !important;
+  }
+
+  /* Post Button (Tweet Button) */
+  button[data-testid="tweetButtonInline"],
+  button[data-testid="tweetButton"],
+  a[data-testid="SideNav_NewTweet_Button"] {
+    background-color: var(--apex-btn-bg) !important;
+    color: var(--apex-btn-text) !important;
+    border: none !important;
+    font-family: var(--apex-font-mono) !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    border-radius: var(--apex-radius) !important;
+    transition: opacity 0.15s ease !important;
+  }
+
+  button[data-testid="tweetButtonInline"]:hover,
+  button[data-testid="tweetButton"]:hover,
+  a[data-testid="SideNav_NewTweet_Button"]:hover {
+    opacity: 0.9 !important;
+  }
+
+  /* Search Input */
+  input[data-testid="SearchBox_Search_Input"],
+  form[role="search"] > div {
+    background-color: var(--apex-bg-secondary) !important;
+    color: var(--apex-text-primary) !important;
+    font-family: var(--apex-font-mono) !important;
+    font-size: 13.5px !important;
+    border: 1px solid var(--apex-border) !important;
+    border-radius: var(--apex-radius) !important;
+  }
+
+  input[data-testid="SearchBox_Search_Input"]::placeholder {
+    color: var(--apex-text-muted) !important;
+    font-family: var(--apex-font-mono) !important;
+  }
+
+  /* ==========================================================================
+     LEFT NAVIGATION SIDEBAR
+     ========================================================================== */
+  header[role="banner"] {
+    border-right: 1px solid var(--apex-border) !important;
+  }
+
+  header[role="banner"] nav[role="navigation"] a,
+  header[role="banner"] nav[role="navigation"] button {
+    color: var(--apex-text-primary) !important;
+    font-family: var(--apex-font-sans) !important;
+    font-weight: 500 !important;
+    border-radius: var(--apex-radius) !important;
+    transition: background-color 0.15s ease, color 0.15s ease !important;
+  }
+
+  header[role="banner"] nav[role="navigation"] a:hover,
+  header[role="banner"] nav[role="navigation"] button:hover {
+    background-color: var(--apex-bg-hover) !important;
+  }
+
+  header[role="banner"] nav[role="navigation"] a span {
+    font-family: var(--apex-font-sans) !important;
+  }
+
+  /* Notification badges */
+  div[data-testid="AppTabBar_Notifications_Link"] span,
+  div[data-testid="AppTabBar_DirectMessage_Link"] span {
+    background-color: var(--apex-accent) !important;
+    color: #ffffff !important;
+    font-family: var(--apex-font-mono) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Account Switcher (Bottom Left) */
+  button[data-testid="SideNav_AccountSwitcher_Button"] {
+    border-radius: var(--apex-radius) !important;
+    border: 1px solid var(--apex-border-subtle) !important;
+    transition: background-color 0.15s ease !important;
+  }
+
+  button[data-testid="SideNav_AccountSwitcher_Button"]:hover {
+    background-color: var(--apex-bg-hover) !important;
+  }
+
+  /* ==========================================================================
+     MODALS, DROPDOWNS & DIALOGS
+     ========================================================================== */
+  div[role="dialog"],
+  div[data-testid="Dropdown"],
+  div[role="menu"],
+  div[data-testid="sheetDialog"],
+  div[data-testid="HoverCard"] {
+    background-color: var(--apex-bg-secondary) !important;
+    border: 1px solid var(--apex-border) !important;
+    border-radius: var(--apex-radius) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
+    color: var(--apex-text-primary) !important;
+  }
+
+  div[role="menuitem"]:hover,
+  div[data-testid="Dropdown"] a:hover {
+    background-color: var(--apex-bg-hover) !important;
+  }
+
+  /* ==========================================================================
+     PROFILE PAGE TWEAKS
+     ========================================================================== */
+  /* Profile Bio */
+  div[data-testid="UserDescription"] {
+    font-family: var(--apex-font-main) !important;
+    line-height: 1.6 !important;
+    color: var(--apex-text-primary) !important;
+  }
+
+  /* Profile Stats (Following / Followers count) */
+  a[href*="/following"] span,
+  a[href*="/verified_followers"] span,
+  a[href*="/followers"] span {
+    font-family: var(--apex-font-mono) !important;
+  }
+
+  /* Profile Edit / Follow button */
+  button[data-testid*="follow"],
+  button[data-testid*="Follow"],
+  button[data-testid="userActions"] {
+    font-family: var(--apex-font-mono) !important;
+    border-radius: var(--apex-radius) !important;
+  }
+
+  /* ==========================================================================
+     APEX TWEAKS & CUSTOMIZATIONS
+     ========================================================================== */
+  /* Dotted Links */
+  /*[[dotted_links]]*/
+
+  /* Desaturate Verified Badges */
+  /*[[desaturate_badges]]*/
+
+  /* Scrollbars */
+  /*[[hide_scrollbars]]*/
+
+  /* Vanity Metrics Mode */
+  /*[[hide_metrics_mode]]*/
+
+  /* ==========================================================================
+     APEX DISTRACTION-FREE HIDERS
+     ========================================================================== */
+  /* Hide Grok / AI Elements */
+  /*[[hide_grok]]*/
+
+  /* Hide Premium Upsells */
+  /*[[hide_premium]]*/
+
+  /* Hide Ads & Promoted Content */
+  /*[[hide_ads]]*/
+
+  /* Hide In-Feed Recommendations */
+  /*[[hide_infeed_recs]]*/
+
+  /* Hide Floating DM Drawer */
+  /*[[hide_dm_drawer]]*/
+
+  /* Hide View Counts */
+  /*[[hide_views]]*/
+
+  /* Hide Right Sidebar & Center Timeline */
+  /*[[hide_right_sidebar]]*/
+}
