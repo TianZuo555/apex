@@ -3,100 +3,24 @@
 @namespace      github.com/clearlysid/apex
 @version        1.0.0
 @description    A clean, minimal, distraction-free theme for Twitter / X inspired by the Apex Obsidian theme, typeset in Geist & Geist Mono.
-@author         Apex (inspired by @clearlysid & @c_m_vignesh)
+@author         clearlysid (https://github.com/clearlysid/apex)
 @homepageURL    https://github.com/clearlysid/apex
 @supportURL     https://github.com/clearlysid/apex/issues
+@updateURL      https://raw.githubusercontent.com/clearlysid/apex/master/stylus/apex-twitter.user.css
 @license        MIT
 @preprocessor   uso
 
 @var select theme_mode "Color Palette" {
-  "dark:Apex Dark (#111111)*": `
-    --apex-bg-primary: #111111;
-    --apex-bg-secondary: #161616;
-    --apex-bg-tertiary: #1c1c1c;
-    --apex-bg-hover: #191919;
-    --apex-bg-glass: rgba(17, 17, 17, 0.85);
-    --apex-text-primary: #cccccc;
-    --apex-text-muted: #707070;
-    --apex-text-faint: #444444;
-    --apex-border: #1f1f1f;
-    --apex-border-subtle: #181818;
-    --apex-accent: #3c983c;
-    --apex-accent-hover: #4db34d;
-    --apex-btn-bg: #e2e2e2;
-    --apex-btn-text: #111111;
-    --apex-like-color: #e05260;
-    --apex-reply-color: #7090b0;
-    --apex-repost-color: #3c983c;
-    --apex-bookmark-color: #d4a359;
-  `,
-  "pitch_black:Apex Pitch Black (#000000 / OLED)": `
-    --apex-bg-primary: #000000;
-    --apex-bg-secondary: #0a0a0a;
-    --apex-bg-tertiary: #121212;
-    --apex-bg-hover: #141414;
-    --apex-bg-glass: rgba(0, 0, 0, 0.88);
-    --apex-text-primary: #cccccc;
-    --apex-text-muted: #666666;
-    --apex-text-faint: #383838;
-    --apex-border: #161616;
-    --apex-border-subtle: #0f0f0f;
-    --apex-accent: #3c983c;
-    --apex-accent-hover: #4db34d;
-    --apex-btn-bg: #e2e2e2;
-    --apex-btn-text: #000000;
-    --apex-like-color: #e05260;
-    --apex-reply-color: #7090b0;
-    --apex-repost-color: #3c983c;
-    --apex-bookmark-color: #d4a359;
-  `,
-  "light:Apex Light (#f7f7f7)": `
-    --apex-bg-primary: #f7f7f7;
-    --apex-bg-secondary: #fcfcfc;
-    --apex-bg-tertiary: #f0f0f0;
-    --apex-bg-hover: #ebebeb;
-    --apex-bg-glass: rgba(247, 247, 247, 0.85);
-    --apex-text-primary: #1a1a1a;
-    --apex-text-muted: #8a8886;
-    --apex-text-faint: #b5b3b1;
-    --apex-border: #e6e6e6;
-    --apex-border-subtle: #efefef;
-    --apex-accent: #2e7d2e;
-    --apex-accent-hover: #3c983c;
-    --apex-btn-bg: #1a1a1a;
-    --apex-btn-text: #f7f7f7;
-    --apex-like-color: #c93b4a;
-    --apex-reply-color: #4a7090;
-    --apex-repost-color: #2e7d2e;
-    --apex-bookmark-color: #b58030;
-  `,
-  "system:Adaptive (Apex Dark in Dark Mode, Apex Light in Light Mode)": `
-    --apex-bg-primary: #111111;
-    --apex-bg-secondary: #161616;
-    --apex-bg-tertiary: #1c1c1c;
-    --apex-bg-hover: #191919;
-    --apex-bg-glass: rgba(17, 17, 17, 0.85);
-    --apex-text-primary: #cccccc;
-    --apex-text-muted: #707070;
-    --apex-text-faint: #444444;
-    --apex-border: #1f1f1f;
-    --apex-border-subtle: #181818;
-    --apex-accent: #3c983c;
-    --apex-accent-hover: #4db34d;
-    --apex-btn-bg: #e2e2e2;
-    --apex-btn-text: #111111;
-    --apex-like-color: #e05260;
-    --apex-reply-color: #7090b0;
-    --apex-repost-color: #3c983c;
-    --apex-bookmark-color: #d4a359;
-  `
+  "dark:Apex Dark (#111111)*": "dark",
+  "pitch_black:Apex Pitch Black (#000000 / OLED)": "pitch_black",
+  "light:Apex Light (#f7f7f7)": "light"
 }
 
 @var select font_mode "Typography Style" {
-  "geist_mono:Geist Mono (Default Apex Monospace)*": "'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
-  "geist_sans:Geist Sans (Clean Proportional)": "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+  "geist_mono:Geist Mono (Apex Monospace)*": "'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
+  "geist_sans:Geist Sans (Sans-Serif)": "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
   "system_mono:System Monospace": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
-  "system_sans:System Sans-Serif": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+  "system_sans:System Sans-Serif": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
 }
 
 @var select font_size "Tweet Font Size" {
@@ -107,254 +31,121 @@
 }
 
 @var select corner_radius "Corner Radius / Border Style" {
-  "apex_square:Apex Minimal (4px Square)*": "4px",
+  "apex_square:Apex Minimal (4px)*": "4px",
+  "sharp:Sharp (0px)": "0px",
   "rounded:Subtle Rounded (8px)": "8px",
-  "sharp:Sharp Monospace (0px)": "0px",
-  "twitter_default:Twitter Default (Pill / Round)": "9999px"
+  "twitter_default:Twitter Default (Pill)": "9999px"
 }
 
 @var select timeline_width "Timeline Max Width" {
-  "standard:Standard Apex (650px)*": "650px",
-  "compact:Compact Zen (600px)": "600px",
-  "wide:Spacious (720px)": "720px",
-  "full:Full Available Width": "100%"
+  "standard:650px (Standard Apex)*": "650px",
+  "compact:600px (Compact)": "600px",
+  "wide:720px (Spacious)": "720px",
+  "full:100% (Full Available Width)": "100%"
 }
 
 @var select hide_right_sidebar "Hide Right Sidebar (Trends & Who to Follow)" {
-  "hide:Hide Right Sidebar (Apex Default)*": `
-    div[data-testid="sidebarColumn"] {
-      display: none !important;
-    }
-    main[role="main"] {
-      display: flex !important;
-      justify-content: center !important;
-    }
-    div[data-testid="primaryColumn"] {
-      max-width: var(--apex-timeline-width) !important;
-      width: 100% !important;
-      margin: 0 auto !important;
-      border-left: 1px solid var(--apex-border) !important;
-      border-right: 1px solid var(--apex-border) !important;
-    }
-  `,
-  "show:Show Right Sidebar": "/* sidebar visible */"
+  "hide:Hide Sidebar (Apex Default)*": "none !important",
+  "show:Show Sidebar": "flex !important"
 }
 
 @var select hide_grok "Hide Grok & AI Elements" {
-  "hide:Hide Grok (Apex Default)*": `
-    a[data-testid="AppTabBar_Grok_Link"],
-    a[href="/i/grok"],
-    a[href*="/i/grok"],
-    button[aria-label="Grok actions"],
-    button[aria-label="Ask Grok"],
-    button[data-testid="grok-share-button"],
-    div[data-testid="GrokDrawer"],
-    div[data-testid="grokDrawer"],
-    div[data-testid="grok_entry_point"],
-    div[data-testid="cellInnerDiv"]:has(a[href*="/i/grok"]),
-    div[data-testid="cellInnerDiv"]:has(button[aria-label*="Grok"]) {
-      display: none !important;
-    }
-  `,
-  "show:Show Grok": "/* grok visible */"
+  "hide:Hide Grok (Apex Default)*": "none !important",
+  "show:Show Grok": "flex !important"
 }
 
 @var select hide_premium "Hide Premium & Verified Upsells" {
-  "hide:Hide Premium Upsells (Apex Default)*": `
-    a[data-testid="AppTabBar_Premium_Link"],
-    a[href="/i/premium_sign_up"],
-    a[href="/i/verified-orgs-signup"],
-    a[href="/i/monetization"],
-    a[href="/i/creator-monetization"],
-    a[href="/i/superfollows"],
-    [data-testid="premium-signup-tab"],
-    aside[aria-label="Subscribe to Premium"],
-    div:has(> aside[aria-label="Subscribe to Premium"]),
-    div[data-testid="cellInnerDiv"]:has(aside[aria-label="Subscribe to Premium"]),
-    div[data-testid="cellInnerDiv"]:has(a[href*="premium_sign_up"]),
-    div[data-testid="cellInnerDiv"]:has(a[href*="verified-orgs"]) {
-      display: none !important;
-    }
-  `,
-  "show:Show Premium": "/* premium visible */"
+  "hide:Hide Premium Upsells (Apex Default)*": "none !important",
+  "show:Show Premium": "flex !important"
 }
 
 @var select hide_ads "Hide Promoted / Ad Tweets" {
-  "hide:Hide Ads (Apex Default)*": `
-    article[data-testid="tweet"]:has(a[href*="quick_promote"]),
-    div[data-testid="cellInnerDiv"]:has([data-testid="placementTracking"]),
-    div[data-testid="placementTracking"],
-    div[data-testid="cellInnerDiv"]:has(a[href*="googleads"]),
-    div[data-testid="cellInnerDiv"]:has(a[href*="/i/promoted_content"]),
-    div[data-testid="cellInnerDiv"]:has(a[href*="x.com/i/promoted_content"]),
-    div[data-testid="cellInnerDiv"]:has([data-testid="promotedIndicator"]),
-    [data-testid="promotedIndicator"] {
-      display: none !important;
-    }
-  `,
-  "show:Show Ads": "/* ads visible */"
+  "hide:Hide Ads (Apex Default)*": "none !important",
+  "show:Show Ads": "flex !important"
 }
 
-@var select hide_infeed_recs "Hide In-Feed Follow Recommendations & Carousels" {
-  "hide:Hide Recommendations (Apex Default)*": `
-    div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Who to follow"]),
-    div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Relevant people"]),
-    div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Who to Follow"]),
-    div[data-testid="cellInnerDiv"]:has(div[aria-label*="Timeline: Connect"]),
-    div[data-testid="cellInnerDiv"]:has(a[href*="/i/connect_people"]) {
-      display: none !important;
-    }
-  `,
-  "show:Show Recommendations": "/* recommendations visible */"
+@var select hide_infeed_recs "Hide In-Feed Follow Recommendations" {
+  "hide:Hide Recommendations (Apex Default)*": "none !important",
+  "show:Show Recommendations": "flex !important"
 }
 
 @var select hide_dm_drawer "Hide Floating Messages (DM) Drawer" {
-  "hide:Hide DM Drawer (Apex Default)*": `
-    div[data-testid="DMDrawer"],
-    div[data-testid="DMDrawerHeader"],
-    div[data-testid="chat-bar"],
-    div[data-testid="dm-bar"] {
-      display: none !important;
-    }
-  `,
-  "show:Show DM Drawer": "/* dm drawer visible */"
+  "hide:Hide DM Drawer (Apex Default)*": "none !important",
+  "show:Show DM Drawer": "flex !important"
 }
 
 @var select hide_views "Hide Tweet View Counts" {
-  "hide:Hide View Counts (Apex Default)*": `
-    article[data-testid="tweet"] div[role="group"] div:has(a[href$="/analytics"]),
-    article[data-testid="tweet"] div[role="group"] a[href$="/analytics"],
-    article[data-testid="tweet"] div[role="group"] a[aria-label*="views"],
-    article[data-testid="tweet"] div[role="group"] a[aria-label*="View"] {
-      display: none !important;
-    }
-  `,
-  "show:Show View Counts": "/* views visible */"
-}
-
-@var select hide_metrics_mode "Vanity Metrics Visibility (Likes / Reposts)" {
-  "always:Always Show Metrics*": "/* metrics visible */",
-  "hover:Show Only on Hover (Zen Mode)": `
-    article[data-testid="tweet"] div[role="group"] span[data-testid="app-text-transition-container"] {
-      opacity: 0 !important;
-      transition: opacity 0.15s ease-in-out !important;
-    }
-    article[data-testid="tweet"]:hover div[role="group"] span[data-testid="app-text-transition-container"],
-    article[data-testid="tweet"] div[role="group"]:hover span[data-testid="app-text-transition-container"] {
-      opacity: 1 !important;
-    }
-  `,
-  "hidden:Completely Hide Metrics": `
-    article[data-testid="tweet"] div[role="group"] span[data-testid="app-text-transition-container"] {
-      display: none !important;
-    }
-  `
+  "hide:Hide View Counts (Apex Default)*": "none !important",
+  "show:Show View Counts": "inline-flex !important"
 }
 
 @var select hide_scrollbars "Hide Scrollbars (Apex Hider)" {
-  "hide:Hide Scrollbars (Apex Default)*": `
-    *::-webkit-scrollbar {
-      display: none !important;
-      width: 0 !important;
-      height: 0 !important;
-    }
-    * {
-      scrollbar-width: none !important;
-      -ms-overflow-style: none !important;
-    }
-  `,
-  "show:Show Scrollbars": "/* scrollbars visible */"
+  "hide:Hide Scrollbars (Apex Default)*": "none !important",
+  "show:Show Scrollbars": "auto !important"
 }
 
 @var select dotted_links "Apex Dotted Link Underlines" {
-  "dotted:Dotted Underlines (Apex Default)*": `
-    [data-testid="tweetText"] a,
-    [data-testid="tweetText"] a:visited {
-      text-decoration: underline dotted !important;
-      text-underline-offset: 3px !important;
-      text-decoration-color: var(--apex-text-muted) !important;
-      transition: color 0.15s ease, text-decoration-color 0.15s ease !important;
-    }
-    [data-testid="tweetText"] a:hover {
-      text-decoration-color: var(--apex-text-primary) !important;
-    }
-  `,
-  "plain:Plain Underlines": `
-    [data-testid="tweetText"] a {
-      text-decoration: underline !important;
-    }
-  `,
-  "none:No Underlines": `
-    [data-testid="tweetText"] a {
-      text-decoration: none !important;
-    }
-  `
+  "dotted:Dotted Underlines (Apex Default)*": "underline dotted",
+  "plain:Plain Underlines": "underline",
+  "none:No Underlines": "none"
 }
 
 @var select desaturate_badges "Verified Badges & Status Icons" {
-  "subdue:Desaturate & Subdue Badges (Apex Default)*": `
-    svg[data-testid="icon-verified"],
-    svg[aria-label*="Verified"] {
-      filter: grayscale(1) opacity(0.35) !important;
-      transition: filter 0.2s ease, opacity 0.2s ease !important;
-    }
-    article[data-testid="tweet"]:hover svg[data-testid="icon-verified"],
-    article[data-testid="tweet"]:hover svg[aria-label*="Verified"] {
-      opacity: 0.8 !important;
-    }
-  `,
-  "default:Default Blue Badges": "/* badges default */"
+  "subdue:Desaturate & Subdue Badges (Apex Default)*": "grayscale(1) opacity(0.35)",
+  "default:Default Blue Badges": "none"
 }
 ==/UserStyle== */
 
 @-moz-document domain("x.com"), domain("twitter.com"), domain("mobile.twitter.com"), domain("pro.twitter.com") {
   /* ==========================================================================
-     FONTS & TYPOGRAPHY IMPORT
-     ========================================================================== */
-  @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700&display=swap');
-
-  /* ==========================================================================
-     THEME VARIABLES & COLOR SCHEME
+     THEME VARIABLES & COLOR PALETTES
      ========================================================================== */
   :root {
-    /*[[theme_mode]]*/
-
     --apex-font-main: /*[[font_mode]]*/;
-    --apex-font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
-    --apex-font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --apex-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    --apex-font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --apex-font-size: /*[[font_size]]*/;
     --apex-radius: /*[[corner_radius]]*/;
     --apex-timeline-width: /*[[timeline_width]]*/;
+    --apex-link-decoration: /*[[dotted_links]]*/;
+    --apex-badge-filter: /*[[desaturate_badges]]*/;
+  }
 
-    /* Override Twitter native CSS variables */
+  /* Apex Dark (Default Palette) */
+  :root,
+  html[data-theme="dark"],
+  body {
+    --apex-bg-primary: #111111;
+    --apex-bg-secondary: #161616;
+    --apex-bg-tertiary: #1c1c1c;
+    --apex-bg-hover: #191919;
+    --apex-bg-glass: rgba(17, 17, 17, 0.85);
+    --apex-text-primary: #cccccc;
+    --apex-text-muted: #707070;
+    --apex-text-faint: #444444;
+    --apex-border: #1f1f1f;
+    --apex-border-subtle: #181818;
+    --apex-accent: #3c983c;
+    --apex-accent-hover: #4db34d;
+    --apex-btn-bg: #e2e2e2;
+    --apex-btn-text: #111111;
+    --apex-like-color: #e05260;
+    --apex-reply-color: #7090b0;
+    --apex-repost-color: #3c983c;
+    --apex-bookmark-color: #d4a359;
+  }
+
+  /* Pitch Black OLED Palette */
+  @supports (display: grid) {
+    /*[[theme_mode]]*/
+  }
+
+  /* Override Twitter Native CSS Variables */
+  :root {
     --color-background: var(--apex-bg-primary) !important;
     --color-text: var(--apex-text-primary) !important;
     --color-text-secondary: var(--apex-text-muted) !important;
     --color-border: var(--apex-border) !important;
-  }
-
-  /* Adaptive light mode fallback */
-  @media (prefers-color-scheme: light) {
-    html:not([style*="color-scheme: dark"]) :root {
-      --apex-bg-primary: #f7f7f7;
-      --apex-bg-secondary: #fcfcfc;
-      --apex-bg-tertiary: #f0f0f0;
-      --apex-bg-hover: #ebebeb;
-      --apex-bg-glass: rgba(247, 247, 247, 0.85);
-      --apex-text-primary: #1a1a1a;
-      --apex-text-muted: #8a8886;
-      --apex-text-faint: #b5b3b1;
-      --apex-border: #e6e6e6;
-      --apex-border-subtle: #efefef;
-      --apex-accent: #2e7d2e;
-      --apex-accent-hover: #3c983c;
-      --apex-btn-bg: #1a1a1a;
-      --apex-btn-text: #f7f7f7;
-      --apex-like-color: #c93b4a;
-      --apex-reply-color: #4a7090;
-      --apex-repost-color: #2e7d2e;
-      --apex-bookmark-color: #b58030;
-    }
   }
 
   /* ==========================================================================
@@ -376,6 +167,20 @@
   /* ==========================================================================
      TIMELINE, FEED & TWEETS
      ========================================================================== */
+  /* Main feed container sizing */
+  div[data-testid="primaryColumn"] {
+    max-width: var(--apex-timeline-width) !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    border-left: 1px solid var(--apex-border) !important;
+    border-right: 1px solid var(--apex-border) !important;
+  }
+
+  main[role="main"] {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
   /* Tweet container cells */
   div[data-testid="cellInnerDiv"],
   article[data-testid="tweet"] {
@@ -398,6 +203,19 @@
     color: var(--apex-text-primary) !important;
   }
 
+  /* Tweet Links */
+  [data-testid="tweetText"] a,
+  [data-testid="tweetText"] a:visited {
+    text-decoration: var(--apex-link-decoration) !important;
+    text-underline-offset: 3px !important;
+    text-decoration-color: var(--apex-text-muted) !important;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease !important;
+  }
+
+  [data-testid="tweetText"] a:hover {
+    text-decoration-color: var(--apex-text-primary) !important;
+  }
+
   /* Tweet Author Display Name */
   div[data-testid="User-Name"] span:first-child,
   div[data-testid="User-Name"] a[role="link"] > div > span {
@@ -416,6 +234,18 @@
     font-family: var(--apex-font-mono) !important;
     color: var(--apex-text-muted) !important;
     font-size: 13.5px !important;
+  }
+
+  /* Verified Badges & Status Icons */
+  svg[data-testid="icon-verified"],
+  svg[aria-label*="Verified"] {
+    filter: var(--apex-badge-filter) !important;
+    transition: filter 0.2s ease, opacity 0.2s ease !important;
+  }
+
+  article[data-testid="tweet"]:hover svg[data-testid="icon-verified"],
+  article[data-testid="tweet"]:hover svg[aria-label*="Verified"] {
+    opacity: 0.8 !important;
   }
 
   /* Top Sticky Header & Tabs Bar */
@@ -723,41 +553,85 @@
   }
 
   /* ==========================================================================
-     APEX TWEAKS & CUSTOMIZATIONS
+     DISTRACTION-FREE HIDERS & TOGGLES
      ========================================================================== */
-  /* Dotted Links */
-  /*[[dotted_links]]*/
-
-  /* Desaturate Verified Badges */
-  /*[[desaturate_badges]]*/
-
   /* Scrollbars */
-  /*[[hide_scrollbars]]*/
+  *::-webkit-scrollbar {
+    display: /*[[hide_scrollbars]]*/;
+    width: 0 !important;
+    height: 0 !important;
+  }
 
-  /* Vanity Metrics Mode */
-  /*[[hide_metrics_mode]]*/
+  /* Right Sidebar (Trends, Who to Follow) */
+  div[data-testid="sidebarColumn"] {
+    display: /*[[hide_right_sidebar]]*/;
+  }
 
-  /* ==========================================================================
-     APEX DISTRACTION-FREE HIDERS
-     ========================================================================== */
-  /* Hide Grok / AI Elements */
-  /*[[hide_grok]]*/
+  /* Grok & AI elements */
+  a[data-testid="AppTabBar_Grok_Link"],
+  a[href="/i/grok"],
+  a[href*="/i/grok"],
+  button[aria-label="Grok actions"],
+  button[aria-label="Ask Grok"],
+  button[data-testid="grok-share-button"],
+  div[data-testid="GrokDrawer"],
+  div[data-testid="grokDrawer"],
+  div[data-testid="grok_entry_point"],
+  div[data-testid="cellInnerDiv"]:has(a[href*="/i/grok"]),
+  div[data-testid="cellInnerDiv"]:has(button[aria-label*="Grok"]) {
+    display: /*[[hide_grok]]*/;
+  }
 
-  /* Hide Premium Upsells */
-  /*[[hide_premium]]*/
+  /* Premium & Verified Upsells */
+  a[data-testid="AppTabBar_Premium_Link"],
+  a[href="/i/premium_sign_up"],
+  a[href="/i/verified-orgs-signup"],
+  a[href="/i/monetization"],
+  a[href="/i/creator-monetization"],
+  a[href="/i/superfollows"],
+  [data-testid="premium-signup-tab"],
+  aside[aria-label="Subscribe to Premium"],
+  div:has(> aside[aria-label="Subscribe to Premium"]),
+  div[data-testid="cellInnerDiv"]:has(aside[aria-label="Subscribe to Premium"]),
+  div[data-testid="cellInnerDiv"]:has(a[href*="premium_sign_up"]),
+  div[data-testid="cellInnerDiv"]:has(a[href*="verified-orgs"]) {
+    display: /*[[hide_premium]]*/;
+  }
 
-  /* Hide Ads & Promoted Content */
-  /*[[hide_ads]]*/
+  /* Promoted / Ads */
+  article[data-testid="tweet"]:has(a[href*="quick_promote"]),
+  div[data-testid="cellInnerDiv"]:has([data-testid="placementTracking"]),
+  div[data-testid="placementTracking"],
+  div[data-testid="cellInnerDiv"]:has(a[href*="googleads"]),
+  div[data-testid="cellInnerDiv"]:has(a[href*="/i/promoted_content"]),
+  div[data-testid="cellInnerDiv"]:has(a[href*="x.com/i/promoted_content"]),
+  div[data-testid="cellInnerDiv"]:has([data-testid="promotedIndicator"]),
+  [data-testid="promotedIndicator"] {
+    display: /*[[hide_ads]]*/;
+  }
 
-  /* Hide In-Feed Recommendations */
-  /*[[hide_infeed_recs]]*/
+  /* In-Feed Recommendations */
+  div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Who to follow"]),
+  div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Relevant people"]),
+  div[data-testid="cellInnerDiv"]:has(aside[aria-label*="Who to Follow"]),
+  div[data-testid="cellInnerDiv"]:has(div[aria-label*="Timeline: Connect"]),
+  div[data-testid="cellInnerDiv"]:has(a[href*="/i/connect_people"]) {
+    display: /*[[hide_infeed_recs]]*/;
+  }
 
-  /* Hide Floating DM Drawer */
-  /*[[hide_dm_drawer]]*/
+  /* Floating DM Drawer */
+  div[data-testid="DMDrawer"],
+  div[data-testid="DMDrawerHeader"],
+  div[data-testid="chat-bar"],
+  div[data-testid="dm-bar"] {
+    display: /*[[hide_dm_drawer]]*/;
+  }
 
-  /* Hide View Counts */
-  /*[[hide_views]]*/
-
-  /* Hide Right Sidebar & Center Timeline */
-  /*[[hide_right_sidebar]]*/
+  /* Tweet View Counts */
+  article[data-testid="tweet"] div[role="group"] div:has(a[href$="/analytics"]),
+  article[data-testid="tweet"] div[role="group"] a[href$="/analytics"],
+  article[data-testid="tweet"] div[role="group"] a[aria-label*="views"],
+  article[data-testid="tweet"] div[role="group"] a[aria-label*="View"] {
+    display: /*[[hide_views]]*/;
+  }
 }
