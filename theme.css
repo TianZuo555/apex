@@ -97,6 +97,22 @@
 	display: none;
 }
 
+/* Hide folder indentation guide lines */
+.tree-item-children,
+.nav-folder-children {
+	border: none !important;
+	border-left: none !important;
+	border-inline-start: none !important;
+}
+
+.tree-item-children::before,
+.tree-item-children::after,
+.nav-folder-children::before,
+.nav-folder-children::after {
+	display: none !important;
+	border: none !important;
+}
+
 /* Hide left panel header icons */
 .mod-top-left-space .workspace-tab-header-container-inner {
 	display: none;
@@ -137,6 +153,12 @@ body {
 	--checkbox-marker-color: transparent;
 	--divider-color: transparent;
 	--workspace-background-translucent: rgba(var(--mono-rgb-0), 0.4);
+	--nav-indentation-guide-width: 0px;
+	--nav-indentation-guide-color: transparent;
+	--tree-indentation-guide-width: 0px;
+	--tree-indentation-guide-color: transparent;
+	--indentation-guide-width: 0px;
+	--indentation-guide-color: transparent;
 }
 
 /* Basic Theme Colours */
