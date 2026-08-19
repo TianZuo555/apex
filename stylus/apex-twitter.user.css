@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Apex for X (Twitter)
 @namespace      github.com/clearlysid/apex
-@version        1.0.0
+@version        1.0.1
 @description    A clean, minimal, distraction-free theme for Twitter / X inspired by the Apex Obsidian theme, typeset in Geist & Geist Mono.
 @author         clearlysid (https://github.com/clearlysid/apex)
 @homepageURL    https://github.com/clearlysid/apex
@@ -11,9 +11,9 @@
 @preprocessor   uso
 
 @var select theme_mode "Color Palette" {
-  "dark:Apex Dark (#111111)*": "dark",
-  "pitch_black:Apex Pitch Black (#000000 / OLED)": "pitch_black",
-  "light:Apex Light (#f7f7f7)": "light"
+  "dark:Apex Dark (#111111)*": "--apex-bg-primary:#111111;--apex-bg-secondary:#161616;--apex-bg-tertiary:#1c1c1c;--apex-bg-hover:#191919;--apex-bg-glass:rgba(17,17,17,0.85);--apex-text-primary:#cccccc;--apex-text-muted:#707070;--apex-text-faint:#444444;--apex-border:#1f1f1f;--apex-border-subtle:#181818;--apex-accent:#3c983c;--apex-accent-hover:#4db34d;--apex-btn-bg:#e2e2e2;--apex-btn-text:#111111;--apex-like-color:#e05260;--apex-reply-color:#7090b0;--apex-repost-color:#3c983c;--apex-bookmark-color:#d4a359;",
+  "pitch_black:Apex Pitch Black (#000000 / OLED)": "--apex-bg-primary:#000000;--apex-bg-secondary:#0a0a0a;--apex-bg-tertiary:#121212;--apex-bg-hover:#141414;--apex-bg-glass:rgba(0,0,0,0.88);--apex-text-primary:#cccccc;--apex-text-muted:#666666;--apex-text-faint:#383838;--apex-border:#161616;--apex-border-subtle:#0f0f0f;--apex-accent:#3c983c;--apex-accent-hover:#4db34d;--apex-btn-bg:#e2e2e2;--apex-btn-text:#000000;--apex-like-color:#e05260;--apex-reply-color:#7090b0;--apex-repost-color:#3c983c;--apex-bookmark-color:#d4a359;",
+  "light:Apex Light (#f7f7f7)": "--apex-bg-primary:#f7f7f7;--apex-bg-secondary:#fcfcfc;--apex-bg-tertiary:#f0f0f0;--apex-bg-hover:#ebebeb;--apex-bg-glass:rgba(247,247,247,0.85);--apex-text-primary:#1a1a1a;--apex-text-muted:#8a8886;--apex-text-faint:#b5b3b1;--apex-border:#e6e6e6;--apex-border-subtle:#efefef;--apex-accent:#2e7d2e;--apex-accent-hover:#3c983c;--apex-btn-bg:#1a1a1a;--apex-btn-text:#f7f7f7;--apex-like-color:#c93b4a;--apex-reply-color:#4a7090;--apex-repost-color:#2e7d2e;--apex-bookmark-color:#b58030;"
 }
 
 @var select font_mode "Typography Style" {
@@ -96,11 +96,18 @@
 }
 ==/UserStyle== */
 
-@-moz-document domain("x.com"), domain("twitter.com"), domain("mobile.twitter.com"), domain("pro.twitter.com") {
+@-moz-document domain("x.com"),
+               domain("twitter.com"),
+               domain("mobile.twitter.com"),
+               domain("pro.twitter.com"),
+               regexp("^https?:\\/\\/([a-zA-Z0-9-]+\\.)*(x|twitter)\\.com(\\/.*)?$") {
+
   /* ==========================================================================
      THEME VARIABLES & COLOR PALETTES
      ========================================================================== */
   :root {
+    /*[[theme_mode]]*/
+
     --apex-font-main: /*[[font_mode]]*/;
     --apex-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     --apex-font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -109,39 +116,8 @@
     --apex-timeline-width: /*[[timeline_width]]*/;
     --apex-link-decoration: /*[[dotted_links]]*/;
     --apex-badge-filter: /*[[desaturate_badges]]*/;
-  }
 
-  /* Apex Dark (Default Palette) */
-  :root,
-  html[data-theme="dark"],
-  body {
-    --apex-bg-primary: #111111;
-    --apex-bg-secondary: #161616;
-    --apex-bg-tertiary: #1c1c1c;
-    --apex-bg-hover: #191919;
-    --apex-bg-glass: rgba(17, 17, 17, 0.85);
-    --apex-text-primary: #cccccc;
-    --apex-text-muted: #707070;
-    --apex-text-faint: #444444;
-    --apex-border: #1f1f1f;
-    --apex-border-subtle: #181818;
-    --apex-accent: #3c983c;
-    --apex-accent-hover: #4db34d;
-    --apex-btn-bg: #e2e2e2;
-    --apex-btn-text: #111111;
-    --apex-like-color: #e05260;
-    --apex-reply-color: #7090b0;
-    --apex-repost-color: #3c983c;
-    --apex-bookmark-color: #d4a359;
-  }
-
-  /* Pitch Black OLED Palette */
-  @supports (display: grid) {
-    /*[[theme_mode]]*/
-  }
-
-  /* Override Twitter Native CSS Variables */
-  :root {
+    /* Override Twitter Native CSS Variables */
     --color-background: var(--apex-bg-primary) !important;
     --color-text: var(--apex-text-primary) !important;
     --color-text-secondary: var(--apex-text-muted) !important;

@@ -26,13 +26,30 @@ When Stylus intercepts a URL and displays this error, it almost always points to
 - **Fix**: Always use the direct raw URL:
   `https://raw.githubusercontent.com/<user>/<repo>/<branch>/path/file.user.css`
 
-### Cause C: Malformed Metadata Header or Byte Order Mark (BOM)
-- Header **must** start at byte 0 with `/* ==UserStyle==\n` (no preceding characters, no UTF-8 BOM, no `/*! ==UserStyle==`).
-- Header **must** close with `==/UserStyle== */`.
+---
+
+## 2. Troubleshooting "Cannot Save" / Disabled Install Button in Stylus
+
+When the Stylus install page loads from GitHub Raw but the **"Install style"** / **"Save"** button cannot be clicked or fails to save, it is caused by internal CSS validation errors:
+
+1. **Bare Keywords inside `@supports` or Rules**:
+   - In `@preprocessor uso`, any placeholder `/*[[var_name]]*/` is replaced literally with the option value.
+   - If `@var select theme_mode` yields a bare identifier like `dark` inside `@supports { dark }`, the CSS parser throws a syntax error, causing `buildCode()` to fail and blocking the install action.
+   - **Fix**: Always have `@var select` values supply valid CSS declarations (e.g. `--apex-bg-primary: #111; ...`).
+2. **Site Target Matching (`@-moz-document`)**:
+   - Stylus extracts site targets for the "Applies to:" section from `@-moz-document`.
+   - Provide both explicit domains AND a robust regex pattern:
+     ```css
+     @-moz-document domain("x.com"),
+                    domain("twitter.com"),
+                    domain("mobile.twitter.com"),
+                    domain("pro.twitter.com"),
+                    regexp("^https?:\\/\\/([a-zA-Z0-9-]+\\.)*(x|twitter)\\.com(\\/.*)?$") {
+     ```
 
 ---
 
-## 2. UserCSS Metadata Header Specifications
+## 3. UserCSS Metadata Header Specifications
 
 The metadata block format:
 
@@ -40,7 +57,7 @@ The metadata block format:
 /* ==UserStyle==
 @name           Apex for X (Twitter)
 @namespace      github.com/clearlysid/apex
-@version        1.0.0
+@version        1.0.1
 @description    A clean, minimal, distraction-free theme for Twitter / X inspired by the Apex Obsidian theme.
 @author         clearlysid (https://github.com/clearlysid/apex)
 @homepageURL    https://github.com/clearlysid/apex
@@ -57,14 +74,14 @@ The metadata block format:
    - **Never** put descriptive text inside parentheses like `@author Apex (inspired by ...)`. The parser converts any parenthesized string into a `new URL(...)`. Non-URL text in parentheses triggers a fatal `invalidURL` parse error.
 2. **Mandatory Fields**:
    - `@name`, `@namespace`, and `@version` are mandatory.
-   - `@version` must be valid SemVer (e.g., `1.0.0`).
+   - `@version` must be valid SemVer (e.g., `1.0.1`).
 3. **`@preprocessor` Options**:
    - Use `@preprocessor uso` for `/*[[variable]]*/` substitution tokens.
    - Use `@preprocessor default` for standard CSS variables (`var(--variable)`).
 
 ---
 
-## 3. CSS & `@-moz-document` Syntax Rules
+## 4. CSS & `@-moz-document` Syntax Rules
 
 1. **NO `@import` inside `@-moz-document`**:
    - Standard CSS and the Stylus UserCSS engine strictly forbid `@import` rules nested inside `@-moz-document` or `@media` blocks.
@@ -77,17 +94,5 @@ The metadata block format:
      --apex-font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
      ```
 3. **Clean `@var select` Options**:
-   - Keep option values concise single-line strings or CSS tokens.
-   - Avoid embedding raw unescaped multiline CSS blocks directly into JSON select dictionaries.
-
----
-
-## 4. Local Installation & Testing Workflow
-
-When testing before pushing to remote:
-1. **In Stylus Manager**:
-   - Open Stylus extension popup -> **Manage** -> click **Write new style**.
-   - Check the **"as UserCSS"** checkbox.
-   - Paste the stylesheet contents and click **Save**.
-2. **Or Drag & Drop**:
-   - If granted file access in Chrome/Firefox extensions settings, drag `apex-twitter.user.css` directly into a browser tab.
+   - Keep option values concise single-line strings or valid CSS declarations.
+   - Avoid unescaped multiline strings in JSON select dictionaries.
