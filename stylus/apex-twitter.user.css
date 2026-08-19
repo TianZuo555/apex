@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Apex for X (Twitter)
 @namespace      github.com/clearlysid/apex
-@version        1.0.2
+@version        1.0.3
 @description    A clean, minimal, distraction-free theme for Twitter / X inspired by the Apex Obsidian theme, typeset in Geist & Geist Mono.
 @author         clearlysid (https://github.com/clearlysid/apex)
 @homepageURL    https://github.com/clearlysid/apex
@@ -349,6 +349,15 @@
     border: 1px solid var(--apex-border-subtle) !important;
   }
 
+  div[data-testid^="UserAvatar-Container-"] div,
+  div[data-testid^="UserAvatar-Container-"] img {
+    border-radius: var(--apex-radius) !important;
+  }
+
+  div[data-testid^="UserAvatar-Container-"] img {
+    border: 1px solid var(--apex-border-subtle) !important;
+  }
+
   /* Photos & Videos in Tweets */
   div[data-testid="tweetPhoto"],
   div[data-testid="tweetPhoto"] img,
@@ -376,23 +385,73 @@
   /* ==========================================================================
      COMPOSE BOX & INPUTS
      ========================================================================== */
+  /* Composer surface */
+  div[data-testid="primaryColumn"] div:has([data-testid="tweetTextarea_0"]):has([aria-label="Choose audience"]),
+  div[data-testid="primaryColumn"] div:has([data-testid="toolBar"]):has([aria-label="Everyone can reply"]),
+  div[data-testid="tweetTextarea_0RichTextInputContainer"] {
+    background-color: var(--apex-bg-primary) !important;
+  }
+
   /* Textarea */
   div[data-testid="tweetTextarea_0"],
-  div[data-testid="tweetTextarea_0_label"] {
+  div[data-testid="tweetTextarea_0_label"],
+  div[data-testid="tweetTextarea_0RichTextInputContainer"],
+  div[data-testid="tweetTextarea_0RichTextInputContainer"] * {
     font-family: var(--apex-font-main) !important;
     font-size: var(--apex-font-size) !important;
     color: var(--apex-text-primary) !important;
-    line-height: 1.6 !important;
+    line-height: 1.65 !important;
+  }
+
+  .public-DraftEditorPlaceholder-inner {
+    color: var(--apex-text-muted) !important;
+  }
+
+  /* Audience controls */
+  button[aria-label="Choose audience"],
+  button[aria-label="Everyone can reply"] {
+    background-color: var(--apex-bg-secondary) !important;
+    border: 1px solid var(--apex-border) !important;
+    border-radius: var(--apex-radius) !important;
+    font-family: var(--apex-font-mono) !important;
+  }
+
+  button[aria-label="Choose audience"] *,
+  button[aria-label="Everyone can reply"] * {
+    color: var(--apex-accent) !important;
+    font-family: var(--apex-font-mono) !important;
+  }
+
+  /* Compose toolbar */
+  div[data-testid="toolBar"] {
+    align-items: center !important;
+    background-color: var(--apex-bg-secondary) !important;
+    border: 1px solid var(--apex-border) !important;
+    border-radius: var(--apex-radius) !important;
+    margin-top: 4px !important;
+    padding: 6px 8px !important;
+  }
+
+  div[data-testid="toolBar"] nav {
+    margin: 0 !important;
   }
 
   /* Compose toolbar icons */
-  div[data-testid="toolBar"] button {
+  div[data-testid="toolBar"] button:not([data-testid="tweetButtonInline"]),
+  div[data-testid="toolBar"] button:not([data-testid="tweetButtonInline"]) * {
     color: var(--apex-text-muted) !important;
+  }
+
+  div[data-testid="toolBar"] button:not([data-testid="tweetButtonInline"]) {
     transition: color 0.15s ease, background-color 0.15s ease !important;
   }
 
-  div[data-testid="toolBar"] button:hover {
-    color: var(--apex-text-primary) !important;
+  div[data-testid="toolBar"] button:not([data-testid="tweetButtonInline"]):hover,
+  div[data-testid="toolBar"] button:not([data-testid="tweetButtonInline"]):hover * {
+    color: var(--apex-accent) !important;
+  }
+
+  div[data-testid="toolBar"] button:not([data-testid="tweetButtonInline"]):hover {
     background-color: var(--apex-bg-hover) !important;
   }
 
@@ -408,6 +467,10 @@
     font-size: 14px !important;
     border-radius: var(--apex-radius) !important;
     transition: opacity 0.15s ease !important;
+  }
+
+  button[data-testid="tweetButtonInline"] * {
+    color: var(--apex-btn-text) !important;
   }
 
   button[data-testid="tweetButtonInline"]:hover,
