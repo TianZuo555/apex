@@ -70,8 +70,12 @@ input[type="checkbox"]:checked::after {
 	color: var(--list-marker-color);
 }
 
-/* Opaque modal backgrounds */
-.prompt {
+/* Opaque modal and popover backgrounds */
+.prompt,
+.popover,
+.popover.hover-popover,
+.suggestion-container,
+.menu {
 	background-color: var(--background-secondary);
 }
 
@@ -83,3 +87,13 @@ input[type="checkbox"]:checked::after {
 .view-header-title-container {
 	-webkit-app-region: drag;
 }
+
+/* Prevent rogue absolute positioning and backgrounds on clipped web media */
+.markdown-rendered video:not([class]),
+.markdown-source-view video:not([class]),
+.cm-embed-block video:not([class]) {
+	position: static !important;
+	background-color: transparent !important;
+	max-width: 100%;
+}
+

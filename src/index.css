@@ -14,6 +14,8 @@ body {
 	--h6-line-height: 1.7;
 	--list-marker-color: var(--text-normal);
 	--modal-background: var(--background-secondary);
+	--popover-bg: var(--background-secondary);
+	--popover-pdf-bg: var(--background-secondary);
 	--font-text: "Geist Mono", ui-monospace, monospace;
 	--h1-font: "Geist", system-ui, sans-serif;
 	--h2-font: "Geist", system-ui, sans-serif;
