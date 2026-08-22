@@ -48,12 +48,32 @@ body {
 }
 
 .theme-dark {
-	--background-primary: transparent;
+	--background-primary: #111111;
 	--background-secondary: #141414;
 	--text-normal: #ccc;
 	--text-muted: #707070;
 }
 
-.theme-dark.is-fullscreen {
-	--background-primary: #111111;
+.theme-dark.is-translucent:not(.is-fullscreen) {
+	--file-header-background: transparent;
+	--file-header-background-focused: transparent;
+}
+
+.theme-dark.is-translucent:not(.is-fullscreen)
+	.workspace-split.mod-root
+	.view-content {
+	/* Keep image embeds from changing the transparent window's compositing. */
+	background-color: rgba(var(--mono-rgb-0), 0.01);
+}
+
+.theme-dark.is-translucent:not(.is-fullscreen)
+	.image-embed
+	.embed-actions {
+	backdrop-filter: none;
+}
+
+.theme-dark.is-translucent:not(.is-fullscreen)
+	.workspace-leaf-content.is-read-mode
+	.markdown-preview-view {
+	background-color: transparent;
 }
